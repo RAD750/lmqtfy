@@ -7,9 +7,8 @@
     <meta http-equiv="cache-control" max-age="604800" content="public">
     <meta name="robots" content="index, follow, archive, cache, imageindex">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="Zeke Y">
-    <meta name="keywords" content="duckduckgo, duck duck go, ddg, lmddgtfy, let me duckduckgo that for you, lmdtfy, let me duck that for you, let me search that for you">
-    <meta name="wot-verification" content="2be96ee9f850fd264aec">
+    <meta name="author" content="Jacopo Cassinis">
+    <meta name="keywords" content="qwant, qwant search, lmqtfy, let me qwant that for you, let me qwant this for you, let me search that for you">
     <link rel="canonical" href="https://lmqtfy.net">
     <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Let Me Qwant That For You" />
 
@@ -17,7 +16,6 @@
 
     <!-- stylesheets -->
     <link rel="stylesheet" href="fonts/icons/icons.min.css">
-    <link rel="stylesheet" href="fonts/open_sans/open_sans.min.css">
     <link rel="stylesheet" href="css/style.min.css">
 
     <!-- for users without javascript -->
@@ -42,8 +40,8 @@
 
     <!-- header -->
     <h1 class="main-header">
-        <a href="https://duckduckgo.com?t=lmddgtfy" class="ddg-logo-link ddg-logo-container">
-            <img alt="Qwant logo" src="img/ddg-logo-light-theme.png" class="ddg-logo" id="ddg-logo">
+        <a href="https://qwant.com" class="qwt-logo-link qwt-logo-container">
+            <img alt="Qwant logo" src="img/qwt-logo-light-theme.png" class="qwt-logo" id="qwt-logo">
         </a>
         Let Me Qwant That For You
     </h1>
@@ -51,22 +49,22 @@
     <!-- search bar -->
     <div class="search-container">
         <noscript>
-        <form id="search-form-no-js" class="search-form" name="search" method="GET" action="https://duckduckgo.com/html">
+        <form id="search-form-no-js" class="search-form" name="search" method="GET" action="https://lite.qwant.com">
           <img alt="cursor" id="cursor" class="cursor">
 
           <input autofocus autocorrect="off" autocapitalize="off" id="search-input" class="search-input" autocomplete="off" name="q" tabindex="1" value="" type="text">
           <input type="hidden" name="t" value="lmddgtfy">
-          <input type="hidden" name="kae" value="-1" id="ddg-theme-url-param">
+          <input type="hidden" name="theme" value="-1" id="qwt-theme-url-param">
           <input type="submit" tabindex="2" value="S" id="search-submit" class="search-submit icon-search">
         </form>
       </noscript>
 
-        <form id="search-form" class="search-form" name="search" method="GET" action="https://duckduckgo.com">
+        <form id="search-form" class="search-form" name="search" method="GET" action="https://qwant.com">
             <img alt="cursor" id="cursor" class="cursor">
 
             <input autofocus autocorrect="off" autocapitalize="off" id="search-input" class="search-input" autocomplete="off" name="q" tabindex="1" value="" type="text">
             <input type="hidden" name="t" value="lmddgtfy">
-            <input type="hidden" name="kae" value="-1" id="ddg-theme-url-param">
+            <input type="hidden" name="theme" value="-1" id="qwt-theme-url-param">
             <input type="submit" tabindex="2" value="S" id="search-submit" class="search-submit icon-search">
         </form>
     </div>
@@ -89,13 +87,11 @@
 
     <!-- footer -->
     <footer>
-        Feel free to also try our partner site, <a href="https://duckduckstart.com/">DuckDuckStart</a>.<br />
-        <small>&copy; Copyright <script>document.write(new Date().getFullYear());</script> <a href="about.html">LMQTFY</a>. The word &ldquo;Qwant&rdquo; and the Qwant logo are copyrighted by <a href="https://duckduckgo.com/?t=lmddgtfy" target="_blank">Qwant</a></small>
+        <small>&copy; Copyright <script>document.write(new Date().getFullYear());</script> <a href="about.html">LMQTFY</a>. The word &ldquo;Qwant&rdquo; and the Qwant logo are copyrighted by <a href="https://qwant.com/" target="_blank">Qwant</a>, this site is not affiliated with Qwant.</small>
     </footer>
 
     <!-- scripts -->
     <script src="js/jquery.min.js"></script>
-    <!-- http://www.jqueryscript.net/text/jQuery-Plugin-To-Simulate-Human-Typing-typetype.html -->
     <script src="js/typetype.min.js"></script>
     <script src="js/script.min.js"></script>
 </body>

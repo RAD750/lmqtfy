@@ -1,221 +1,114 @@
 $(document).ready(function() {
-  // variables
-  var searchInput = $('#search-input'),
-      urlResult = $('#url-result'),
-      cursor = $('#cursor'),
-      previewSearchLink = $('.preview-search-link');
+    var c = $("#search-input"),
+        d = $("#url-result"),
+        e = $("#cursor"),
+        a = $(".preview-search-link");
+    d.attr("value", window.location);
+    d.mouseup(function() { this.select() });
+    d.focus(function() { this.select() });
 
-  // display the current location for the shareable url
-  urlResult.attr("value", window.location);
-  // keep the shareable text selected
-  urlResult.mouseup(function() {
-    this.select()
-  });
-  // select the shareable url when they focus on it
-  urlResult.focus(function() {
-    this.select();
-  });
-
-  // get a cookie's value
-  // http://stackoverflow.com/a/4825695/4013202
-  function getCookie(c_name) {
-    if (document.cookie.length > 0) {
-      c_start = document.cookie.indexOf(c_name + "=");
-
-      if (c_start != -1) {
-        c_start = c_start + c_name.length + 1;
-        c_end = document.cookie.indexOf(";", c_start);
-
-        if (c_end == -1) {
-          c_end = document.cookie.length;
+    function b(g) {
+        if (document.cookie.length > 0) {
+            c_start = document.cookie.indexOf(g + "=");
+            if (c_start != -1) {
+                c_start = c_start + g.length + 1;
+                c_end = document.cookie.indexOf(";", c_start);
+                if (c_end == -1) { c_end = document.cookie.length }
+                return unescape(document.cookie.substring(c_start, c_end))
+            }
         }
-        return unescape(document.cookie.substring(c_start, c_end));
-      }
+        return ""
     }
-    return "";
-  }
-
-  if (getCookie('theme') == 'dark') {
-    $('body').addClass('dark-theme').removeClass('light-theme');
-    $('#ddg-logo').attr('src', 'img/ddg-logo-dark-theme.png');
-    $('#ddg-theme-url-param').attr("value", "d");
-  }
-  else if (getCookie('theme') == 'light') {
-    $('body').addClass('light-theme').removeClass('dark-theme');
-    $('#ddg-logo').attr('src', 'img/ddg-logo-light-theme.png');
-    $('#ddg-theme-url-param').attr("value", "-1");
-  }
-
-  // if they're giving the link to someone else
-  if (window.location.search == "") {
-    // make the shareable link display the URL in the address bar
-    urlResult.attr("value", window.location.protocol + "//" + window.location.host + window.location.pathname + window.location.search);
-
-    // when they submit the search form
-    $('#search-form').submit(function(event) {
-      // don't do anything
-      event.preventDefault();
-      event.stopPropagation();
-
-      // redirect
-      window.location = urlResult.attr("value");
-
-      return false;
-    });
-
-    // when they press a key
-    searchInput.keyup(function(event) {
-      var searchVal = $('#search-input').val();
-
-      $(this).attr("value", $(this).val());
-
-      // make the link below the search bar show the right text and link to the right place
-      urlResult.attr("value", window.location.protocol + "//" + window.location.host + window.location.pathname + "?q=" + encodeURIComponent(searchVal));
-
-      // update the preview link
-      previewSearchLink.attr("href", window.location.protocol + "//" + window.location.host + window.location.pathname + "?q=" + encodeURIComponent(searchVal));
-    });
-  }
-  // if they're following a link someone else gave them
-  else {
-    // decode the user's search
-    var urlDecoded = decodeURIComponent(window.location.search);
-
-    // trim off everything but the search term
-    if (urlDecoded.substr(0, 3) == "?q=") {
-      // trim off the "?q=" part of the url
-      urlDecoded = urlDecoded.substr(3);
-      urlDecoded = urlDecoded.replace(/(\S)\+(\S)/g, '$1 $2');
+    if (b("theme") == "dark") {
+        $("body").addClass("dark-theme").removeClass("light-theme");
+        $("#qwt-logo").attr("src", "img/qwt-logo-dark-theme.png");
+        $("#qwt-theme-url-param").attr("value", "1")
+    } else {
+        if (b("theme") == "light") {
+            $("body").addClass("light-theme").removeClass("dark-theme");
+            $("#qwt-logo").attr("src", "img/qwt-logo-light-theme.png");
+            $("#qwt-theme-url-param").attr("value", "-1")
+        }
     }
-
-    if (urlDecoded.length > 0) {
-      // show the default cursor
-      cursor.show();
-      cursor.attr("src", "img/cursor-default.png");
-
-      // make sure the link shows the right text and links to the right place
-      urlResult.text(window.location.protocol + "//" + window.location.host + window.location.pathname + window.location.search);
-      urlResult.attr("href", window.location.protocol + "//" + window.location.host + window.location.pathname + window.location.search);
-
-      if ($('body').width() > 650) {
-        // animate the cursor down to the search bar
-        cursor.animate({
-          top: '20px',
-          left: '400px'
-        }, 2250);
-
-        // change the cursor to the I-beam when over the search bar
-        setTimeout(function() {
-          cursor.attr("src", "img/cursor-text.png");
-        }, 1500);
-
-        // type the users search query
-        searchInput.delay(2250).typetype(urlDecoded, {
-          // when it finishes typing go click the submit button
-          callback: function() {
-            cursor.animate({
-              top: '10px',
-              left: '600px'
-            }, 1000);
-
-            // make it look like the submit button is being hovered
-            setTimeout(function() {
-              $('#search-submit').addClass("hovered");
-            }, 800);
-
-            // make the cursor look like it's able to click the submit button
-            setTimeout(function() {
-              cursor.attr("src", "img/cursor-pointer.png");
-            }, 800);
-
-            // simulate a click on the submit button
-            setTimeout(function() {
-              $('#search-submit').trigger("click");
-              $('#search-submit').addClass("active");
-            }, 1100);
-          }
+    if (window.location.search == "") {
+        d.attr("value", window.location.protocol + "//" + window.location.host + window.location.pathname + window.location.search);
+        $("#search-form").submit(function(g) {
+            g.preventDefault();
+            g.stopPropagation();
+            window.location = d.attr("value");
+            return false
         });
-      }
-      else if ($('body').width() <= 650) {
-        // animate the cursor down to the search bar
-        cursor.animate({
-          top: '16px',
-          left: '200px'
-        }, 1700);
-
-        // change the cursor to an I-beam when over the search bar
-        setTimeout(function() {
-          cursor.attr("src", "img/cursor-text.png");
-        }, 1100);
-
-        // type the users search query
-        searchInput.delay(2000).typetype(urlDecoded, {
-          // when it finishes typing go click the submit button
-          callback: function() {
-            cursor.animate({
-              top: '10px',
-              left: '260px'
-            }, 800);
-
-            // make it look like the submit button is being hovered
-            setTimeout(function() {
-              $('#search-submit').addClass("hovered");
-            }, 320);
-
-            // make the cursor look like it's able to click the submit button
-            setTimeout(function() {
-              cursor.attr("src", "img/cursor-pointer.png");
-            }, 320);
-
-            // simulate a click on the submit button
-            setTimeout(function() {
-              $('#search-submit').trigger("click");
-            }, 1000);
-          }
-        });
-      }
+        c.keyup(function(h) {
+            var g = $("#search-input").val();
+            $(this).attr("value", $(this).val());
+            d.attr("value", window.location.protocol + "//" + window.location.host + window.location.pathname + "?q=" + encodeURIComponent(g));
+            a.attr("href", window.location.protocol + "//" + window.location.host + window.location.pathname + "?q=" + encodeURIComponent(g))
+        })
+    } else {
+        var f = decodeURIComponent(window.location.search);
+        if (f.substr(0, 3) == "?q=") {
+            f = f.substr(3);
+            f = f.replace(/(\S)\+(\S)/g, "$1 $2")
+        }
+        if (f.length > 0) {
+            e.show();
+            e.attr("src", "img/cursor-default.png");
+            d.text(window.location.protocol + "//" + window.location.host + window.location.pathname + window.location.search);
+            d.attr("href", window.location.protocol + "//" + window.location.host + window.location.pathname + window.location.search);
+            if ($("body").width() > 650) {
+                e.animate({ top: "20px", left: "400px" }, 2250);
+                setTimeout(function() { e.attr("src", "img/cursor-text.png") }, 1500);
+                c.delay(2250).typetype(f, {
+                    callback: function() {
+                        e.animate({ top: "10px", left: "600px" }, 1000);
+                        setTimeout(function() { $("#search-submit").addClass("hovered") }, 800);
+                        setTimeout(function() { e.attr("src", "img/cursor-pointer.png") }, 800);
+                        setTimeout(function() {
+                            $("#search-submit").trigger("click");
+                            $("#search-submit").addClass("active")
+                        }, 1100)
+                    }
+                })
+            } else {
+                if ($("body").width() <= 650) {
+                    e.animate({ top: "16px", left: "200px" }, 1700);
+                    setTimeout(function() { e.attr("src", "img/cursor-text.png") }, 1100);
+                    c.delay(2000).typetype(f, {
+                        callback: function() {
+                            e.animate({ top: "10px", left: "260px" }, 800);
+                            setTimeout(function() { $("#search-submit").addClass("hovered") }, 320);
+                            setTimeout(function() { e.attr("src", "img/cursor-pointer.png") }, 320);
+                            setTimeout(function() { $("#search-submit").trigger("click") }, 1000)
+                        }
+                    })
+                }
+            }
+        }
     }
-  }
-
-  // focus on the input when they click in the search form
-  $('#search-form').click(function() {
-    $('#search-input').focus();
-  });
-
-  // give them the shortened url when they ask for it
-  $('#shorten-url-result').click(function(event) {
-    event.preventDefault();
-    event.stopPropagation();
-
-    var urlToShorten = "https://is.gd/create.php?format=json&url=" + encodeURIComponent(urlResult.attr("value")),
-        shortenedURL;
-
-    if (!shortenedURL) {
-      $.getJSON(urlToShorten, function(data) {
-        shortenedURL = data.shorturl;
-        shortenedURL = shortenedURL.replace("http:", "https:");
-        urlResult.attr("value", shortenedURL);
-      });
-    }
-    else {
-      urlResult.attr("value", shortenedURL);
-    }
-  });
-
-  // switching themes
-  $('#dark-theme-icon').click(function() {
-    $('body').addClass('dark-theme').removeClass('light-theme');
-    $('#ddg-logo').attr('src', 'img/ddg-logo-dark-theme.png');
-    $('#ddg-theme-url-param').attr("value", "d");
-
-    document.cookie = 'theme=dark; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/;';
-  });
-
-  $('#light-theme-icon').click(function() {
-    $('body').addClass('light-theme').removeClass('dark-theme');
-    $('#ddg-logo').attr('src', 'img/ddg-logo-light-theme.png');
-    $('#ddg-theme-url-param').attr("value", "-1");
-
-    document.cookie = 'theme=light; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/;';
-  });
+    $("#search-form").click(function() { $("#search-input").focus() });
+    $("#shorten-url-result").click(function(g) {
+        g.preventDefault();
+        g.stopPropagation();
+        var i = "https://is.gd/create.php?format=json&url=" + encodeURIComponent(d.attr("value")),
+            h;
+        if (!h) {
+            $.getJSON(i, function(j) {
+                h = j.shorturl;
+                h = h.replace("http:", "https:");
+                d.attr("value", h)
+            })
+        } else { d.attr("value", h) }
+    });
+    $("#dark-theme-icon").click(function() {
+        $("body").addClass("dark-theme").removeClass("light-theme");
+        $("#qwt-logo").attr("src", "img/qwt-logo-dark-theme.png");
+        $("#qwt-theme-url-param").attr("value", "1");
+        document.cookie = "theme=dark; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/;"
+    });
+    $("#light-theme-icon").click(function() {
+        $("body").addClass("light-theme").removeClass("dark-theme");
+        $("#qwt-logo").attr("src", "img/qwt-logo-light-theme.png");
+        $("#qwt-theme-url-param").attr("value", "-1");
+        document.cookie = "theme=light; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/;"
+    })
 });
