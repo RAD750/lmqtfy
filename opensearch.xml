@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:moz="http://www.mozilla.org/2006/browser/search/">
-    <ShortName>LMDDGTFY</ShortName>
-    <Description>Let Me DuckDuckGo That For You</Description>
-    <Url type="text/html" method="get" template="https://lmddgtfy.net/?q={searchTerms}"/>
-    <Image width="16" height="16">https://lmddgtfy.net/favicon.ico</Image>
+    <ShortName>LMQTFY</ShortName>
+    <Description>Let Me Qwant That For You</Description>
+    <Url type="text/html" method="get" template="https://lmqtfy.net?q={searchTerms}"/>
+    <Image width="16" height="16">https://lmqtfy.netfavicon.ico</Image>
     <InputEncoding>UTF-8</InputEncoding>
-    <moz:SearchForm>https://lmddgtfy.net/</moz:SearchForm>
+    <moz:SearchForm>https://lmqtfy.net</moz:SearchForm>
 </OpenSearchDescription>

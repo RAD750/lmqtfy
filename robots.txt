@@ -8,4 +8,4 @@ Disallow: /traffic.html
 Disallow: /qes.csv
 Disallow: /reqs.csv
 
-Sitemap: https://lmddgtfy.net/sitemap.xml
+Sitemap: https://lmqtfy.netsitemap.xml
