@@ -2,8 +2,8 @@
 <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:moz="http://www.mozilla.org/2006/browser/search/">
     <ShortName>LMQTFY</ShortName>
     <Description>Let Me Qwant That For You</Description>
-    <Url type="text/html" method="get" template="https://lmqtfy.net?q={searchTerms}"/>
-    <Image width="16" height="16">https://lmqtfy.netfavicon.ico</Image>
+    <Url type="text/html" method="get" template="https://lmqtfy.eu?q={searchTerms}"/>
+    <Image width="16" height="16">https://lmqtfy.eufavicon.ico</Image>
     <InputEncoding>UTF-8</InputEncoding>
-    <moz:SearchForm>https://lmqtfy.net</moz:SearchForm>
+    <moz:SearchForm>https://lmqtfy.eu</moz:SearchForm>
 </OpenSearchDescription>
