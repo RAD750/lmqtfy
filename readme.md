@@ -1,5 +1,6 @@
-# LMDDGTFY
+# LMQTFY
 
-[Let Me DuckDuckGo That For You - LMDDGTFY](https://kk4oxj.github.io/lmddgtfy)
+[Let Me Qwant That For You - LMQTFY](https://rad750.github.io/lmqtfy)
 
-Dax (the DuckDuckGo mascot), and the word “DuckDuckGo” are copyrighted by DuckDuckGo
+The Qwant logo is the sole property and copyright of Qwant.
+Based on [LMDDGTFY by Myano](https://github.com/myano/lmddgtfy)
